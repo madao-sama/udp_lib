@@ -81,7 +81,7 @@ int udp_client_server::udp_cs::send(const char *msg, const char* addr){
     return 1;
 }
 int udp_client_server::udp_cs::send(const char *msg, const char* addr, int port){
-    // client.Addr_s.sin_port = htons(port);
+    client.Addr_s.sin_port = htons(port);
     client.Addr_s.sin_addr.s_addr = inet_addr(addr);
     if (sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr *)&client.Addr_s, sizeof(client.Addr_s)) == -1) {
         perror("sendto failed");
@@ -90,6 +90,7 @@ int udp_client_server::udp_cs::send(const char *msg, const char* addr, int port)
     }
     return 1;
 }
+
 void udp_client_server::udp_cs::get(char* buf){
     char buffer[DEF_BUFFER_SIZE];
     memset(&client.Addr_s, 0, sizeof(client.Addr_s));

@@ -12,6 +12,6 @@ int main(){
         udp_socket.get(rx_msg);
         cout<<udp_socket.get_client_addr()<<" "<<udp_socket.get_client_port()<<endl;
         cout<<rx_msg<<endl;
-        udp_socket.send(rx_msg);
+        udp_socket.send(rx_msg, "192.168.240.3", 1234);
     }
 }
